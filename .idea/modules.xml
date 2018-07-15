@@ -3,8 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MiniThunder.iml" filepath="$PROJECT_DIR$/MiniThunder.iml" />
+      <module fileurl="file://C:\Users\Chant\Documents\GitHub\MiniThunder\MiniThunder.iml" filepath="C:\Users\Chant\Documents\GitHub\MiniThunder\MiniThunder.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\Chant\Documents\GitHub\MiniThunder\app\app.iml" filepath="C:\Users\Chant\Documents\GitHub\MiniThunder\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/thunder/thunder.iml" filepath="$PROJECT_DIR$/thunder/thunder.iml" />
+      <module fileurl="file://C:\Users\Chant\Documents\GitHub\MiniThunder\thunder\thunder.iml" filepath="C:\Users\Chant\Documents\GitHub\MiniThunder\thunder\thunder.iml" />
     </modules>
   </component>
 </project>
