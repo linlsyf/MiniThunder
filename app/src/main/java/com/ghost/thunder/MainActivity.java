@@ -1,5 +1,6 @@
 package com.ghost.thunder;
 
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -19,6 +20,9 @@ public class MainActivity extends AppCompatActivity {
     EditText inputUrl;
     Button btnDownload;
     TextView tvStatus;
+    public static final String DOWNLOAD_PATH =
+            Environment.getExternalStorageDirectory().getAbsolutePath()+
+                    "/downloads/";
     Handler handler = new Handler(Looper.getMainLooper()){
         @Override
         public void handleMessage(Message msg) {
@@ -27,11 +31,11 @@ public class MainActivity extends AppCompatActivity {
                 long taskId = (long) msg.obj;
                 XLTaskInfo taskInfo = XLTaskHelper.instance(getApplicationContext()).getTaskInfo(taskId);
                 tvStatus.setText(
-                        "fileSize:" + taskInfo.mFileSize
-                                + " downSize:" + taskInfo.mDownloadSize
+                        "fileSize:" + convertFileSize(taskInfo.mFileSize)
+                                + " downSize:" +convertFileSize(taskInfo.mDownloadSize)
                                 + " speed:" + convertFileSize(taskInfo.mDownloadSpeed)
                                 + "/s dcdnSpeed:" + convertFileSize(taskInfo.mAdditionalResDCDNSpeed)
-                                + "/s filePath:" + "/sdcard/" + XLTaskHelper.instance(getApplicationContext()).getFileName(inputUrl.getText().toString())
+                                + "/s filePath:" +DOWNLOAD_PATH + XLTaskHelper.instance(getApplicationContext()).getFileName(inputUrl.getText().toString())
                 );
                 handler.sendMessageDelayed(handler.obtainMessage(0,taskId),1000);
             }
@@ -51,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 if(!TextUtils.isEmpty(inputUrl.getText())) {
                     long taskId = 0;
                     try {
-                        taskId = XLTaskHelper.instance(getApplicationContext()).addThunderTask(inputUrl.getText().toString(),"/sdcard/",null);
+                        taskId = XLTaskHelper.instance(getApplicationContext()).addThunderTask(inputUrl.getText().toString(),DOWNLOAD_PATH,null);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
